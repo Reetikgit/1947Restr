@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<title>Product | 1947</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="index.css">
+<style>
+body {font-family: "Times New Roman", Georgia, Serif;}
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display";
+  letter-spacing: 5px;
+}
+</style>
+<body>
+  <header >
+    <div class="head">
+      <h2 style="font-family: 'Times New Roman', Times, serif; color: black;" >1947 Chase the Flavours</h2>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li class="dropdown">
+          <a href="" class="dropbtn" style="color: black">Menu</a>
+          <i class="fa fa-caret-down"></i>
+          <div class="dropdown-content">
+            <a href="#food">Flavours Specials</a>
+            <a href="#china">Chinese</a>
+
+          </div>
+        </li>
+
+        <li><a href="#" class="active">Services</a></li>
+        <li><a href="#" class="active">View Cart</a></li>
+        <li><a href="#" class="active">Feedback</a></li>
+        <li><a href="#" class="active">About Us</a></li>
+      </ul>
+    </nav>
+
+  </header>
+<!-- Navbar (sit on top) -->
+
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:1100px">
+
+  <!-- About Section -->
+  <div class="w3-row w3-padding-64" id="about">
+    <div class="w3-col m6 w3-padding-large ">
+     <img src="https://i.ytimg.com/vi/7cRY6fph1Bg/maxresdefault.jpg" class="w3-round w3-image w3-opacity-min" alt="Table Setting" width="600" height="750">
+    </div>
+
+    <div class="w3-col m6 w3-padding-large">
+      <h1 class="w3-center" >About Bisi Bele Bath</h1><br>
+      <h5 class="w3-center">Tradition since 1889</h5>
+      <p class="w3-large">Bisi Bele BathBisi bele bath is a popular dish made with rice, lentils, mix veggies & a special spice powder known as bisi bele bath powder seasonal ingredients.</p>
+      <p class="w3-large w3-text-grey w3-hide-medium">It's why one of the state's most popular rice dishes includes the 'bisi' (hot) prefix almost suggesting that you dare not serve this dish at any other temperature. For me, this is comfort food - a dish like an Ambur or Hyderabad biryani that was invented for Sunday afternoons. Where a siesta is usually the next logical step. It's a dish that's etched in my summer vacation memories in my city of birth - Bengaluru. </p>
+      <a href=""><button class="btn">Place order</button></a>
+      <a ><button class="btn" id="myBtn">Add to Cart</button></a>
+      <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2 class="popuphead">Add To Cart</h2>
+          </div>
+          <div class="modal-body">
+            <p class="popupbody">Bisi Bele Bath</p>
+            <p class="popupdetails">Cost = 100Rs</p>
+            <p class="popupdetails">GST = 10%</p>
+            <p class="popupdetails">Delivery Charges = 40Rs</p>
+            <label style="color:black">Quantity</label>
+            <input type="number" name="" placeholder="Enter the Quantity">
+            <p class="popupdetails">Total Cost = 150Rs</p>
+          </div>
+          <div class="modal-footer">
+            <a><button class="btn">Confirm</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+
+
+</body>
+<script type="text/javascript">
+  var modal = document.getElementById("myModal");
+
+  // Get the button that opens the modal
+  var btn = document.getElementById("myBtn");
+
+  // Get the <span> element that closes the modal
+  var span = document.getElementsByClassName("close")[0];
+
+  // When the user clicks the button, open the modal
+  btn.onclick = function() {
+    modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the modal
+  span.onclick = function() {
+    modal.style.display = "none";
+  }
+</script>
+</html>

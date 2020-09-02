@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chase the Flavours</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" type="text/css" href="slide.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <header >
+      <div class="head">
+        <h2 style="font-family: 'Times New Roman', Times, serif; color: black;" >1947 Chase the Flavours</h2>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#" class="active">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropbtn" style="color: black">Menu</a>
+            <i class="fa fa-caret-down"></i>
+            <div class="dropdown-content">
+              <a href="#food">Flavours Specials</a>
+              <a href="#china">Chinese</a>
+
+            </div>
+          </li>
+
+          <li><a href="#" class="active">Services</a></li>
+          <li><a href="#" class="active">Feedback</a></li>
+          <li><a href="#" class="active">About Us</a></li>
+        </ul>
+      </nav>
+
+    </header>
+    <!-- <div class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px;" id="home"> -->
+      <img class="w3-image" src="img2.jpg"  width="1600" height="400">
+      <div class=" w3-padding-large w3-opacity">
+        <h1 class="w3-xxlarge newclass">Chase the Flavours</h1>
+      </div>
+
+    <div class="w3-main w3-content w3-padding" style="max-width:1200px;margin-top:100px;"id="food" >
+
+      <!-- First Photo Grid-->
+      <section class="w3-card w3-red">
+        <h1 class="w3-xxlarge">Flavours Specials</h1>
+        <div class="w3-row-padding w3-padding-16 w3-center" id="fooditems" >
+
+
+
+          
+        </div>
+      </section>
+
+      <h1 class="w3-xxlarge">Chinese</h1>
+      <div class="w3-row-padding w3-padding-16 w3-center" id="china">
+        
+      </div>
+    </div>
+
+
+<!--
+    <showcase>
+      <div class="container">
+        <h1>Food served with Independance</h1>
+        <h1>Tast & Quality Matters</h1>
+        <div class="category">
+
+          <div class="bisibele">
+            <img src="https://i.ytimg.com/vi/7cRY6fph1Bg/maxresdefault.jpg">
+            <h4>Bisi-Bele-Bath</h4>
+            <p>Bisi-Bele-Bath is one of the famous and delicioous dish of karnataka</p>
+          </div>
+
+          <div class="chillip">
+            <img src="https://i.ytimg.com/vi/oGIYBbfT68s/maxresdefault.jpg">
+            <h4>Chilli-Potatoes</h4>
+            <p>It is one of the famous and delicioous dish of North</p>
+          </div>
+
+          <div class="gobi">
+            <img src="https://www.indianveggiedelight.com/wp-content/uploads/2017/06/thumnail_Gobi_manchuri-min.jpg">
+            <h4>Gobi Manchurain</h4>
+            <p>Gobi Manchurian is one of the famous and delicioous dish of karnataka</p>
+          </div>
+
+
+        </div>
+      </div>
+    </showcase> -->
+<!--     <a href=""><button class="btn">View Menu</button></a> -->
+  </body>
+  <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase.js"></script>
+  <script type="text/javascript">
+    
+    var firebaseConfig = {
+      apiKey: "AIzaSyAi-mXsp9IpKUoDo4A59BbsA0TxBjNb0lw",
+      authDomain: "restaurant-6e5ed.firebaseapp.com",
+      databaseURL: "https://restaurant-6e5ed.firebaseio.com",
+      projectId: "restaurant-6e5ed",
+      storageBucket: "restaurant-6e5ed.appspot.com",
+      messagingSenderId: "632447617294",
+      appId: "1:632447617294:web:08206a2421c64e3d58af5f"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    let formMessage = firebase.database().ref('FoodData');
+    formMessage.on('value',gotData,errData);
+    function gotData(data){
+      sc=data.val();
+      keys =Object.keys(sc);
+      // $('#fooditems').empty();
+      for(var i=0;i<keys.length;i++){
+          var k=keys[i];
+          var name=sc[k].FoodName;
+          var description=sc[k].Description;
+          var price=sc[k].FoodPrice;
+          var image=sc[k].Image;
+          document.getElementById("fooditems").innerHTML+=
+          `<div class="w3-quarter">
+            <a href="product.html"><img src="`+image+`" alt="Sandwich" style="width:100%"></a>
+            <h3>`+name+`</h3>
+            <p style="display: none;" id="desc">`+description+`</p>
+            <a><button class="btn" id="myBtn" onclick=showmodel("myModal`+i+`") >Add To Cart</button></a>
+
+            <div id="myModal`+i+` class="modal" style="display:none">
+              <!-- Modal content -->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <span class="close" onclick="hidemodel()">&times;</span>
+                  <h2 class="popuphead">Add To Cart</h2>
+                </div>
+                <div class="modal-body">
+                  <p class="popupbody">`+name+`</p>
+                  <p class="popupdetails">Cost = `+price+`</p>
+                  <p class="popupdetails">GST = 10%</p>
+                  <p class="popupdetails">Delivery Charges = 40Rs</p>
+                  <label style="color:black">Quantity</label>
+                  <input type="number" name="" placeholder="Enter the Quantity">
+                  <p class="popupdetails">Total Cost = 150Rs</p>
+                </div>
+                <div class="modal-footer">
+                  <a><button class="btn">Confirm</button></a>
+                </div>
+              </div>
+
+            </div>
+            <a ><button class="btn" onclick="showDesc()">View More</button></a>
+          </div>
+          `
+      }
+      // document.getElementById("count").innerHTML=keys.length;
+    }
+    function errData(){
+      
+    }
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn4 = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    function showmodel(index) {
+      alert(index)
+      document.getElementById(index).style.display = "block";
+    }
+    function hidemodel(index) {
+      document.getElementById(index).style.display = "none";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    // span.onclick = function() {
+    //   modal.style.display = "none";
+    // }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    $(document).ready(function(){
+      // Add smooth scrolling to all links
+      $("a").on('click', function(event) {
+
+        // Make sure this.hash has a value before overriding default behavior
+        if (this.hash !== "") {
+          // Prevent default anchor click behavior
+          event.preventDefault();
+
+          // Store hash
+          var hash = this.hash;
+
+          // Using jQuery's animate() method to add smooth page scroll
+          // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 800, function(){
+
+            // Add hash (#) to URL when done scrolling (default click behavior)
+            window.location.hash = hash;
+          });
+        } // End if
+      });
+    });
+    var i=0;
+    function showDesc(){
+
+      
+      i++;
+      if(i%2!=0){
+        document.getElementById("desc").style.display="block";
+      }else{
+    
+        document.getElementById("desc").style.display="none";
+      }
+
+    }
+
+
+  </script>
+  <script type="text/javascript">
+    
+  </script>
+
+</html>
